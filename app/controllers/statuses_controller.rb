@@ -4,7 +4,6 @@ class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:show, :edit, :update, :destroy]
   
-mount_uploader :image, ImageUploader
   # GET /statuses
   # GET /statuses.json
   def index
