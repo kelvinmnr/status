@@ -4,8 +4,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -20,6 +18,13 @@ include CarrierWave::MiniMagick
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+ version :resized do
+    # returns an image with a maximum width of 100px 
+    # while maintaining the aspect ratio
+    # 10000 is used to tell CW that the height is free 
+    # and so that it will hit the 100 px width first
+    process :resize_to_fit => [100, 100]
+  end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]

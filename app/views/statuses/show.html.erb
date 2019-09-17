@@ -3,7 +3,7 @@
 <p>
   <strong>Post:</strong>
   <%= @status.post %>
-  <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
+  <%= image_tag(@status.image.url, alt: 'Image') if @status.image? %>
 </p>
 
 <%= link_to 'Edit', edit_status_path(@status) %> |
